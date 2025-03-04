@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title> 신혼 부부 거주지 추천 서비스 </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- My Stylesheet-->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <style>
+        .service-item.selected {
+            border: 2px solid #1a4a7a; 
+        }
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky top p-0">
+        <a href="index.html" class="navbar-brand px-4 px-lg-5">
+            <h1 class="m-0" style="color:#1a4a7a">KHUDA</h1>
+        </a>
+
+        <div class="navbar-nav ms-auto p-4 p-lg-0 d-flex align-items-center">
+            <a href="index.html" class="nav-item nav-link active">Home </a>  
+            <a class="btn btn-dark rounded-0 py-4 px-lg ms-3" id="resultBtn" href="result.html">결과확인<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+
+    <!--Category-->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p>Choose 1</p>
+                <h1>원하시는 조건을 선택해주세요</h1>
+            </div>
+            <div class="row g-4">
+                
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" data-type="traffic">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px;height: 65px;">
+                            <i class="fa fa-subway text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">교통 중심</h4>
+                        <p class="mb-4"><h6>이동이 편리한 대중 교통 중심 지역</h6>버스정류장개수, 지하철역개수를 고려한 지표입니다.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" data-type="infrastructure">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px;height: 65px;">
+                            <i class="fa fa-building text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">생활 중심</h4>
+                        <p class="mb-4"><h6>생활 편의시설이 잘 갖춰진 지역</h6>대형마트 개수, 병원 개수를 고려한 지표입니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" data-type="education">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px;height: 65px;">
+                            <i class="fa fa-book text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">교육 중심</h4>
+                        <p class="mb-4"><h6>학군과 교육 인프라가 우수한 지역</h6>총 상급학교 수, 초등학교 개수를 고려한 지표입니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" data-type="culture">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px;height: 65px;">
+                            <i class="fa fa-theater-masks text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">문화 중심</h4>
+                        <p class="mb-4"><h6>여가 및 문화생활을 즐기기 좋은 지역</h6>총 문화시설 수, 공원시설을 고려한 지표입니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" data-type="nature">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px;height: 65px;">
+                            <i class="fa fa-tree text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">자연 중심</h4>
+                        <p class="mb-4"><h6>공기가 깨끗하고 녹지가 풍부한 지역</h6>미세먼지(PM10) 평균, 초미세먼지(PM25) 평균, 녹지면적을 고려한 지표입니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" data-type="safety">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px;height: 65px;">
+                            <i class="fa fa-shield-alt text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">안전 중심</h4>
+                        <p class="mb-4"><h6>치안이 잘 유지되는 안전한 지역</h6>5대범죄발생횟수, CCTV개수, 총 치안시설 수, 안전센터및구조대개수를 고려한 지표입니다.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5" data-type="baby">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px;height: 65px;">
+                            <i class="fa fa-baby text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">육아 중심</h4>
+                        <p class="mb-4"><h6>자녀를 키우기 적합한 지역</h6>산후조리원개수, 유원시설개수, 어린이집개수, 야간운영어린이집개수를 고려한 지표입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $('.service-item').click(function() {
+            $('.service-item').removeClass('selected');
+
+            $(this).addClass('selected');
+        });
+
+
+        $('#resultBtn').click(function(e) {
+            const selectedItem = $('.service-item.selected');
+
+            if (selectedItem.length === 0) {
+                e.preventDefault(); 
+                alert('선택한 항목이 없습니다!');
+            } else {
+                const type = selectedItem.data('type');
+               
+                $(this).attr('href', type === 'safety' ? 'safety.html' :
+                                type === 'infrastructure' ? 'infra.html' :
+                                type === 'education' ? 'edu.html' : 
+                                type == 'nature' ? 'nature.html':
+                                type == 'culture' ? 'culture.html':
+                                type == 'traffic' ? 'traffic.html' : 
+                                type == 'baby' ? 'baby.html': 'result.html');
+            }
+        });
+    </script>
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+       
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+
+</body>
+
+
+
+</html>

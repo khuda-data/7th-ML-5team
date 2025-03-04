@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title> 신혼 부부 거주지 추천 서비스 </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- My Stylesheet-->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <style>
+        .service-item.selected {
+            border: 2px solid #1a4a7a; 
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { 
+            height: 600px;
+            margin-top: 50px;
+            position:relative;
+        
+        }
+        .ranking-container {
+            position: absolute;
+            top: 90px;
+            left: 20px; 
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            width: 250px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000; 
+        }
+        .ranking-container h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            
+        }
+        .ranking-item {
+            font-size: 16px;
+            margin: 5px 0;
+            color:black;
+        }
+        .text-cen {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 100px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a4a7a;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+     
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky top p-0">
+        <a href="index.html" class="navbar-brand px-4 px-lg-5">
+            <h1 class="m-0" style="color:#1a4a7a">KHUDA</h1>
+        </a>
+
+        <div class="navbar-nav ms-auto p-4 p-lg-0 d-flex align-items-center">
+            <a href="service.html" class="nav-item nav-link active">맞춤분석 </a>
+           
+            <a class="btn btn-dark rounded-0 py-4 px-lg ms-3" id="resultBtn" href="index.html">Home<i class="fa fa-home ms-3"></i></a>
+        </div>
+    </nav>
+    <div class="text-cen">자연 중심</div>
+ 
+
+    <div class="container-xxl py-3">
+        <div class="ranking-container wow fadeIn " data-wow-delay="0.2s">
+            <h2>추천 순위</h2>
+            <div class="ranking-item">1위: 강남구 개포 1동</div>
+            <div class="ranking-item">1위: 강남구 청담동 </div>
+            <div class="ranking-item">1위: 강남구 삼성 1동</div>
+            <div class="ranking-item">4위: 강남구 삼성 2동</div>
+            <div class="ranking-item">5위: 강남구 대치동</div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- GeoJSON 데이터 로드 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+           
+            var map = L.map('map').setView([37.5465, 126.9890], 12);
+
+     
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+         
+            var defaultStyle = {
+                fillColor: 'lightblue',
+                color: 'black',
+                weight: 2,
+                fillOpacity: 0.6
+            };
+            var targetDistricts = [
+                '서울특별시 강남구 개포1동', '서울특별시 강남구 청담동', '서울특별시 강남구 삼성1동', '서울특별시 강남구 삼성2동', '서울특별시 강남구 대치1동'
+            ];
+
+            $.getJSON('./서울_행정동_경계_2017.geojson', function(geojsonData) {
+                L.geoJSON(geojsonData, {
+                    style: function(feature) {
+                        var districtName = feature.properties['adm_nm'];  
+
+                        if (targetDistricts.includes(districtName)) {
+                            return {
+                                fillColor: 'red', 
+                                color: 'black',
+                                weight: 2,
+                                fillOpacity: 0.8
+                            };
+                        }
+                        return defaultStyle; 
+                    },
+                   
+                }).addTo(map);
+
+              
+                var rankings = [
+                    { rank: '1위', name: '서울특별시 강남구 개포1동', lat: 37.4770, lon: 127.0667, score: 92.30, airPM10: '중', airPM25: '최상', greenArea: '최상' },
+                    { rank: '2위', name: '서울특별시 강남구 청담동', lat: 37.5270, lon: 127.0534, score: 92.30, airPM10: '중', airPM25: '최상', greenArea: '최상' },
+                    { rank: '3위', name: '서울특별시 강남구 삼성1동', lat: 37.5087, lon: 127.0495, score: 92.30, airPM10: '중', airPM25: '최상', greenArea: '최상' },
+                    { rank: '4위', name: '서울특별시 강남구 삼성2동', lat: 37.5130, lon: 127.0610, score: 92.30, airPM10: '중', airPM25: '최상', greenArea: '최상' },
+                    { rank: '5위', name: '서울특별시 강남구 대치1동', lat: 37.4970, lon: 127.0620, score: 92.30, airPM10: '중', airPM25: '최상', greenArea: '최상' }
+                ];
+           
+                
+                rankings.forEach(function(place) {
+                    L.marker([place.lat, place.lon]).addTo(map)
+                        .bindPopup(`
+                            <b>${place.rank}: ${place.name}</b><br>
+                            <b>[${place.score}점]</b><br>
+                            - 미세먼지(PM10) 평균: ${place.airPM10}<br>
+                            - 초미세먼지(PM2.5) 평균: ${place.airPM25}<br>
+                            - 녹지면적: ${place.greenArea}
+                        `)
+                        .setIcon(L.divIcon({
+                            className: 'text-center',
+                            html: `<div style="font-size: 18px; font-weight: bold; ">${place.rank}</div>`,
+                            iconSize: [30, 30]
+                        }));
+                });
+            });
+        });
+        
+    </script>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+ 
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
