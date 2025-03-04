@@ -24,5 +24,5 @@
 
 ### 🖥 웹 서비스
 ![Web Service Screenshot 1](images/스크린샷%202025-03-04%20212256.png)
-![Web Service Screenshot 2](images/스크린샷%202025-03-04%20212318.png)
-![Web Service Screenshot 3](images/스크린샷%202025-03-04%20212310.png)
+![Web Service Screenshot 2](images/스크린샷%202025-03-04%20212310.png)
+![Web Service Screenshot 3](images/스크린샷%202025-03-04%20212318.png)
