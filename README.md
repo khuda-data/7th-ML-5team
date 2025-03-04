@@ -20,9 +20,9 @@
 | 전형진 | 아이디어 빌딩, 모델링,  하이퍼파라미터 튜닝 |
 
 ### 📊 최종 데이터셋
-![Final Dataset](images/스크린샷 2025-03-04 212528.png)
+![Final Dataset](images/스크린샷%202025-03-04%20212528.png)
 
 ### 🖥 웹 서비스
-![Web Service Screenshot 1](images/스크린샷 2025-03-04 212256.png)
-![Web Service Screenshot 2](images/스크린샷 2025-03-04 212318.png)
-![Web Service Screenshot 3](images/스크린샷 2025-03-04 212310.png)
+![Web Service Screenshot 1](images/스크린샷%202025-03-04%20212256.png)
+![Web Service Screenshot 2](images/스크린샷%202025-03-04%20212318.png)
+![Web Service Screenshot 3](images/스크린샷%202025-03-04%20212310.png)
